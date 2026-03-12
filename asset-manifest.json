@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/sellify-creative-doc/static/css/main.e6c13ad2.css",
-    "main.js": "/sellify-creative-doc/static/js/main.2eda3be6.js",
+    "main.js": "/sellify-creative-doc/static/js/main.8701f439.js",
     "static/js/453.da92cb4c.chunk.js": "/sellify-creative-doc/static/js/453.da92cb4c.chunk.js",
     "index.html": "/sellify-creative-doc/index.html",
     "main.e6c13ad2.css.map": "/sellify-creative-doc/static/css/main.e6c13ad2.css.map",
-    "main.2eda3be6.js.map": "/sellify-creative-doc/static/js/main.2eda3be6.js.map",
+    "main.8701f439.js.map": "/sellify-creative-doc/static/js/main.8701f439.js.map",
     "453.da92cb4c.chunk.js.map": "/sellify-creative-doc/static/js/453.da92cb4c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.2eda3be6.js"
+    "static/js/main.8701f439.js"
   ]
 }
