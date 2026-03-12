@@ -314,6 +314,49 @@ Crawling và AI generation là tác vụ nặng, không thể xử lý đồng b
 
 ### Tại sao cần Vector DB?
 Keyword search không đủ cho creative assets. Vector DB cho phép tìm "ảnh lifestyle màu sáng, tone ấm" — tìm theo **ý nghĩa**, không chỉ tên file.
+## 5. Ước tính Chi phí Vận hành
+
+> Ước tính dựa trên quy mô **100 sản phẩm/tháng**, mỗi sản phẩm tạo ~20–30 creative.
+
+### Infrastructure
+
+| Dịch vụ | Mục đích | Chi phí/tháng |
+|---|---|---|
+| AWS S3 | Lưu trữ raw assets + variants (~50GB) | ~$1–2 |
+| AWS CloudFront | CDN phân phối assets | ~$2–5 |
+| PostgreSQL (RDS t3.micro) | Metadata DB | ~$15–20 |
+| Redis (ElastiCache t3.micro) | Task queue | ~$15–20 |
+| EC2 t3.medium (2 instance) | Backend + Celery worker | ~$60–80 |
+| **Tổng Infrastructure** | | **~$93–127/tháng** |
+
+### AI Services
+
+| Dịch vụ | Mục đích | Chi phí/tháng |
+|---|---|---|
+| GPT-4o API | Copy generation + product analysis | ~$30–50 |
+| Stable Diffusion (Replicate) | Image variants, background swap | ~$40–60 |
+| Remove.bg API | Background removal | ~$9 (200 ảnh) |
+| RunwayML Gen-3 | AI video generation | ~$40–60 |
+| Whisper API | Video captioning | ~$5–10 |
+| **Tổng AI Services** | | **~$124–189/tháng** |
+
+### Tổng hợp
+
+| Hạng mục | Chi phí/tháng |
+|---|---|
+| Infrastructure | ~$93–127 |
+| AI Services | ~$124–189 |
+| Proxy (BrightData) | ~$30–50 |
+| **Tổng ước tính** | **~$247–366/tháng** |
+| Chi phí mỗi sản phẩm | **~$2.5–3.7/sản phẩm** |
+
+### Tối ưu chi phí theo giai đoạn
+
+| Giai đoạn | Cách tiết kiệm | Chi phí ước tính |
+|---|---|---|
+| MVP (thử nghiệm) | Dùng free tier AWS + Replicate pay-as-you-go | ~$50–80/tháng |
+| Beta (10–50 sp/tháng) | Spot instance EC2, giới hạn AI variant | ~$100–150/tháng |
+| Production (100+ sp/tháng) | Reserved instance, tự host SD model | ~$250–370/tháng |
 
 `;
 
